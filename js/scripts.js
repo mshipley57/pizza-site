@@ -1,45 +1,53 @@
 //back end logic
-var inputtedPizzaSize = ("");
-var inputtedPizzaTopping;
-var inputtedQuantity = 0;
-var price = 0;
-
 function Pizza(size, topping) {
   this.size = size;
-  this.topping = topping;
+  this.topping = toppings
 }
 
-price = function(size,topping,quantity) {
-  var sizePrice = 0;
-  var typePrice = 0;
-  if (size === "Kilobyte") {
-    sizePrice = 8;
-  } else {
-    sizePrice = 10;
-  }
-  if (type === "Tesla Coils" || "AI") {
-    typePrice = 1;
-  } else {
-    typePrice = '.75';
-  }
-  return parseFloat ((typePrice * sizePrice * quantity).toFixed(2));
-};
+var inputtedPizzaSize = ("");
+var inputtedPizzaTopping = ("");
+var inputtedQuantity = 0;
+var cost = 0;
 
+cost = function(size,topping,quantity) {
+  var sizeCost = 0;
+  var toppingsCost = 0;
+  if (size === "Kilobyte") {
+    sizeCost = 8;
+  } else {
+    sizeCost = 10;
+  }
+  if ((toppings === "Tesla Coils") || ("AI")) {
+    toppingsCost = 1;
+  } else {
+    typeCost = .8;
+  }
+  append.parseFloat ((typeCost * sizeCost * quantity).toFixed(2));
+};
 //UI logic
 $(document).ready(function(){
-  $("form#pizza").submit(function(event){
+  $("form#wholePizza").submit(function(event){
     event.preventDefault();
 
-    inputtedPizzaSize = $("select#pizzaBigness").val();
+    inputtedPizzaSize = $("select#pizza-size-options").val();
     inputtedPizzaTopping = $("select#pizza-toppings").val();
-    inputtedQuantity = parseInt ($("input#amount")).val();
-    price = price(inputtedPizzaSize, inputtedPizzaTopping, inputtedQuantity).toFixed(2);
+    inputtedQuantity = parseInt($("input#amount")).val();
+    cost = cost(inputtedPizzaSize, inputtedPizzaTopping, inputtedQuantity).toFixed(2);
 
-    $("#pizzaBigness").append(inputtedPizzaSize);
+    $("#pizza-size-options").append(inputtedPizzaSize);
     $("#pizza-toppings").append(inputtedPizzaTopping);
-    $("#amount").append(inputtedQuantity);
-    $("price").text("$" + price);
+    $("#pizza-amount").append(inputtedQuantity);
+    $(".pizza-cost").text("$" + cost);
 
-    $("price").show;
+    $(".pizza-cost").append;
+
+  //  newPizza = new Pizza (inputtedPizzaSize, inputtedPizzaTopping, inputtedQuantity, cost);
+  //  $(".pizza-size-options").text(newPizza.pizza-size-options);
+  //  $("#pizza-toppings").text(newPizza.toppings);
+  //  $("#pizza-amount").text(newPizza.amount);
+  //  $(".pizza-cost").text("$" + cost);
+
+  //  $(".pizza-cost").show();
+
   })
 });
