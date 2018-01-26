@@ -1,8 +1,8 @@
 //back end logic
 var inputtedPizzaSize = ("");
-var inputtedPizzaTopping
-var inputtedQuantity = 0
-var price = 0
+var inputtedPizzaTopping;
+var inputtedQuantity = 0;
+var price = 0;
 
 function Pizza(size, topping) {
   this.size = size;
@@ -15,15 +15,15 @@ price = function(size,topping,quantity) {
   if (size === "Kilobyte") {
     sizePrice = 8;
   } else {
-    sizePrice = 10
+    sizePrice = 10;
   }
   if (type === "Tesla Coils" || "AI") {
-    typePrice = 1
+    typePrice = 1;
   } else {
-    typePrice = .75;
+    typePrice = '.75';
   }
-  return parseFloat ((typePrice * sizePrice * quantity)).toFixed(2));
-}
+  return parseFloat ((typePrice * sizePrice * quantity).toFixed(2));
+};
 
 //UI logic
 $(document).ready(function(){
@@ -32,5 +32,14 @@ $(document).ready(function(){
 
     inputtedPizzaSize = $("select#pizzaBigness").val();
     inputtedPizzaTopping = $("select#pizza-toppings").val();
-  }
-}
+    inputtedQuantity = parseInt ($("input#amount")).val();
+    price = price(inputtedPizzaSize, inputtedPizzaTopping, inputtedQuantity).toFixed(2);
+
+    $("#pizzaBigness").append(inputtedPizzaSize);
+    $("#pizza-toppings").append(inputtedPizzaTopping);
+    $("#amount").append(inputtedQuantity);
+    $("price").text("$" + price);
+
+    $("price").show;
+  })
+});
