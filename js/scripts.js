@@ -4,10 +4,6 @@ function Pizza(size, topping) {
   this.toppings = toppings;
 }
 
-var inputtedPizzaSize = ("");
-var inputtedPizzaTopping = ("");
-var inputtedQuantity = 1;
-var cost = 0;
 
 cost = function(size,topping,quantity) {
   var sizeCost = (0);
@@ -17,6 +13,7 @@ cost = function(size,topping,quantity) {
   } else; {
     sizeCost = (10);
   }
+
   if (toppings === "Tesla Coils") {
     toppingsCost = (1);
   } else; {
@@ -25,20 +22,28 @@ cost = function(size,topping,quantity) {
 
 };
 
+
 //UI logic
 $(document).ready(function(){
 
-  $("form#pizza-size").submit(function(event){
+  $(".wholePizza").submit(function(event){
     event.preventDefault();
-    alert("ashfads")
+
+    var inputtedPizzaSize = ("");
+    var inputtedPizzaTopping = ("");
+    var inputtedQuantity = 1;
+    var cost = 0;
+
     $("select#pizza-size-options").val();
     $("select#pizza-type").val();
     $("input#pizza-amount").val();
+    
+
+    //Pizza.prototype.cost = function(amount) {
+      //return ((parseFloat(this.size)) + ((parseFloat(this.toppings)));
 
 
 
 
-
-
-  })
+  });
 });
