@@ -1,11 +1,11 @@
 //back end logic
-function Pizza(size, topping) {
+function Pizza(size, toppings) {
   this.size = size;
   this.toppings = toppings;
 }
 
+Pizza.prototype.calculateCost = function(size,topping) {
 
-cost = function(size,topping,quantity) {
   var sizeCost = (0);
   var toppingsCost = (0);
   if (size === "Kilobyte") {
@@ -14,14 +14,15 @@ cost = function(size,topping,quantity) {
     sizeCost = (10);
   }
 
-  if (toppings === "Tesla Coils") {
-    toppingsCost = (1);
+  if (topping === "Tesla Coils") {
+    toppingsCost = (2);
   } else; {
-    typeCost = '.8';
+    toppingsCost = 1;
   }
+var onePizzaCost = sizeCost + toppingsCost
 
+return onePizzaCost
 };
-
 
 //UI logic
 $(document).ready(function(){
@@ -29,21 +30,31 @@ $(document).ready(function(){
   $(".wholePizza").submit(function(event){
     event.preventDefault();
 
-    var inputtedPizzaSize = ("");
-    var inputtedPizzaTopping = ("");
-    var inputtedQuantity = 1;
-    var cost = 0;
+    // var inputtedPizzaSize = ("");
+    // var inputtedPizzaTopping = ("");
+    // var inputtedQuantity = 1;
 
-    $("select#pizza-size-options").val();
-    $("select#pizza-type").val();
-    $("input#pizza-amount").val();
-    
+    var costOfTotalOrder = 0;
 
-    //Pizza.prototype.cost = function(amount) {
-      //return ((parseFloat(this.size)) + ((parseFloat(this.toppings)));
+    var size =   $("select#pizza-size-options").val();
+    console.log(size);
 
+    var type = $("select#toppings").val();
+        console.log(type);
 
+    var amountOfPizzas = $("input#amount").val();
+    for( var i = 1; i <= amountOfPizzas; i++) {
 
+      var singlePizza = new Pizza(size, type)
+
+      var costOfSinglePizza = singlePizza.calculateCost(singlePizza.size,singlePizza.toppings)
+
+      costOfTotalOrder = costOfTotalOrder + costOfSinglePizza
+    }
+    console.log(costOfTotalOrder)
+
+    $("#pizza-size").append(costOfTotalOrder);
 
   });
+
 });
